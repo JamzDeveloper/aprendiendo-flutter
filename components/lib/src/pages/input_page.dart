@@ -13,14 +13,8 @@ class _InputPageState extends State<InputPage> {
   String _date = '';
 
   String _selectOption = 'Goku';
-  /*List<String> _powers = [
-    'Volar',
-    'Super sayayin',
-    'Kaio-Ken',
-    'Cañon Galick',
-    'Kamehameha'
-  ];
-*/
+  List<String> _powers = ["Goku", "Vegeta", "Gohan", "Trunks"];
+
   TextEditingController _inputFieldDateController = TextEditingController();
 
   @override
@@ -129,7 +123,7 @@ class _InputPageState extends State<InputPage> {
         ),
         hintText: 'Fecha de nacimineto',
         labelText: 'Fecha de nacimineto',
-        suffixIcon: Icon(Icons.date_range_outlined),
+        suffixIcon: const Icon(Icons.date_range_outlined),
         icon: const Icon(Icons.calendar_today),
       ),
       onTap: () {
@@ -150,15 +144,16 @@ class _InputPageState extends State<InputPage> {
     return ListTile(
       title: Text('Nombre: $_fullName'),
       subtitle: Text('Email: $_email'),
+      trailing: Text('Personaje $_selectOption'),
     );
   }
 
   void _selectDate(BuildContext context) async {
     DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: new DateTime.now(),
-      firstDate: new DateTime(2000),
-      lastDate: new DateTime(2025),
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2025),
     );
 
     if (picked != null) {
@@ -170,7 +165,29 @@ class _InputPageState extends State<InputPage> {
     }
   }
 
-/*  List<DropdownMenuItem<String>> getOptionsDropdown() {
+  Widget _createDropdown() {
+    return Row(
+      children: [
+        const Icon(Icons.select_all),
+        const SizedBox(width: 40.0),
+        DropdownButton<String>(
+            value: _selectOption,
+            icon: const Icon(Icons.arrow_downward),
+            underline: Container(
+              height: 2,
+              color: Colors.grey,
+            ),
+            onChanged: (String? newValue) {
+              setState(() {
+                _selectOption = newValue!;
+              });
+            },
+            items: getOptionsDropdown())
+      ],
+    );
+  }
+
+  List<DropdownMenuItem<String>> getOptionsDropdown() {
     List<DropdownMenuItem<String>> list = [];
 
     for (var can in _powers) {
@@ -180,29 +197,6 @@ class _InputPageState extends State<InputPage> {
       ));
     }
     return list;
-  }
-*/
-  Widget _createDropdown() {
-    return DropdownButton<String>(
-      value: _selectOption,
-      icon: const Icon(Icons.arrow_downward),
-      underline: Container(
-        height: 2,
-        color: Colors.grey,
-      ),
-      onChanged: (String? newValue) {
-        setState(() {
-          _selectOption = newValue!;
-        });
-      },
-      items: <String>["Goku", "Vegeta", "Gohan", "Trunks"]
-          .map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),
-    );
   }
 }
 
