@@ -25,7 +25,7 @@ class BodyHome extends StatelessWidget {
             press: () {},
           ),
           FeaturedPlants(),
-         const SizedBox(
+          const SizedBox(
             height: kDefaultPadding,
           )
         ],

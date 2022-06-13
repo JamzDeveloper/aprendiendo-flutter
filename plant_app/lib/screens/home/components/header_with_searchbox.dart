@@ -31,12 +31,12 @@ class HeaderWithSearchBox extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  "Hi Uishopy!",
+                  "Plant App",
                   style: Theme.of(context).textTheme.headline5?.copyWith(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
                 Spacer(),
-                Image.asset("assets/images/logo.png")
+                // Image.asset("assets/images/logo.png")
               ],
             ),
           ),
