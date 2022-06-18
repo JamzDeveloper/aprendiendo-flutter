@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart' as LImagePicker;
 
 import 'package:plant_app/constants.dart';
-import 'package:plant_app/screens/data_plan/data_plan_screen.dart';
+import 'package:plant_app/screens/disease_plan/disease_plan_screen.dart';
 
 // import 'package:plant_app/components/my_buttom_appbar.dart';
 import 'package:plant_app/screens/details/details_screen.dart';
@@ -143,19 +143,20 @@ class _HomeScrenState extends State<HomeScren> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => DiseasePlanScreen(
+                                      file: File(_pickedFile.path))));
+                        },
                         child: Text("Enfermedad"),
                         style: TextButton.styleFrom(
                           backgroundColor: primaryColorMaterial.shade50,
                         ),
                       ),
                       TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => DataPlanScreen(file:File(_pickedFile.path))));
-                          },
+                          onPressed: () {},
                           child: Text("Buscar Planta"),
                           style: TextButton.styleFrom(
                               backgroundColor: primaryColorMaterial.shade50))
