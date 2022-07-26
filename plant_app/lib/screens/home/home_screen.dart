@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart' as LImagePicker;
 
 import 'package:plant_app/constants.dart';
+import 'package:plant_app/model/Plant.dart';
 import 'package:plant_app/screens/disease_plan/disease_plan_screen.dart';
 
 // import 'package:plant_app/components/my_buttom_appbar.dart';
@@ -113,6 +114,7 @@ class _HomeScrenState extends State<HomeScren> {
   }
 
   Future setImage(int opt, BuildContext context) async {
+    Plant plant= new Plant();
     var _pickedFile;
 
     if (opt == 1 || opt == 3) {
@@ -143,7 +145,8 @@ class _HomeScrenState extends State<HomeScren> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TextButton(
-                        onPressed: () {
+                        onPressed: () async{
+                           plant.send_image( await _pickedFile.path);
                           Navigator.push(
                               context,
                               MaterialPageRoute(

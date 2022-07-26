@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:plant_app/constants.dart';
 import 'package:plant_app/screens/home/home_screen.dart';
+import 'package:plant_app/screens/presentation/presentation_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
           primaryColor: kPrimaryColor,
           textTheme: Theme.of(context).textTheme.apply(bodyColor: kTextColor),
           visualDensity: VisualDensity.adaptivePlatformDensity),
-      home: HomeScren(),
+      home: PresentationScreen(),
     );
   }
 }
