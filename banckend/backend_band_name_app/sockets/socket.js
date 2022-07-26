@@ -16,6 +16,6 @@ io.on("connection", (client) => {
 
   client.on("emit-message", (payload) => {
       console.log(payload);
-    io.emit("new-message", "Hey !!!");
+    io.emit("new-message", payload);
   });
 });
